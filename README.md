@@ -35,3 +35,44 @@ This is a simple application with just one endpoint in one server, there is no p
 
 
 ## Requirements
+python
+
+Create a python virtual environment
+On Windows:
+```bash 
+> mkdir assignment
+> cd assignment
+> py -3 -m venv venv
+#Activate virtual environment
+> .\venv\Scripts\activate
+```
+
+On MacOs/Linux:
+```bash 
+$ mkdir assignment
+$ cd assignment
+$ python3 -m venv venv
+#Activate virtual environment
+$ . venv/bin/activate
+```
+
+Install Flask on your venv
+- Werkzeug 
+- Jinja 
+- MarkupSafe
+- ItsDangerous
+- Click 
+
+Python 3.11.1
+Flask 2.2.2
+Werkzeug 2.2.2
+python-dotenv
+flask-restful
+pip install -U marshmallow
+```bash
+
+```
+
+## Deployment
+
+recomend virtual env
