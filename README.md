@@ -69,6 +69,7 @@ Werkzeug 2.2.2
 python-dotenv
 flask-restful
 pip install -U marshmallow
+pydantic
 ```bash
 
 ```

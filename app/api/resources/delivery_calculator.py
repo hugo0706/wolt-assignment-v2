@@ -4,13 +4,13 @@ from marshmallow import ValidationError
 
 
 class Delivery_calculator(Resource):
-    #deberia usar post?
+    
     def post(self):    
         
         data = request.json            
         
         try:
-            validated_data = CartSchema().load(data)
+            validated_data = CartSchema().load(data)            
         except ValidationError as err:
             return err.messages
         
