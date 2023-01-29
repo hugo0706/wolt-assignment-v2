@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from app.api.resources import delivery_calculator
+from app.api.resources import cart_resource
 
 def create_app(test_config=None):
 
@@ -8,7 +8,7 @@ def create_app(test_config=None):
     
     api = Api(app)
     
-    api.add_resource(delivery_calculator.Delivery_calculator,"/api")   
+    api.add_resource(cart_resource.Delivery_calculator,"/api/get-delivery-fee")   
 
     return app
     
