@@ -1,7 +1,6 @@
 from flask_restful import Resource,request
-from app.api.schemas.cart_schema import CartSchema
-from marshmallow import ValidationError
-
+from pydantic import ValidationError
+from app.api.models.cart import Cart
 
 class Delivery_calculator(Resource):
     
@@ -10,9 +9,8 @@ class Delivery_calculator(Resource):
         data = request.json            
         
         try:
-            validated_data = CartSchema().load(data)            
-        except ValidationError as err:
-            return err.messages
-        
-        
+            a=Cart(**data)
+        except ValidationError as e:
+            return e.errors(),422 
+                
         return "validated_data",200
