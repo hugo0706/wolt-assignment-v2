@@ -2,6 +2,8 @@
 1. [Why Flask? Django vs Flask](#django-vs-flask)
 2. [Project Structure](#project-structure)
 3. [Requirements](#requirements)
+4. [Deployment](#deployment)
+5. [Tests](#tests)
 ## Django vs Flask
 
 To decide whether I will use Flask or Django as a Framework to develop this API, first I have to make clear the requirements and information I have about the project. 
@@ -33,48 +35,97 @@ This is a simple application with just one endpoint in one server, there is no p
 
 ## Project Structure
 
+```
+├── app
+│   ├── app.py --> Flask project creation and API routing declaration
+│   └── api
+│       ├── models    --> Pydantic models used to validate and serialize/deserialize data
+│       ├── resources --> Flask-restful Resources used to act upon an upcoming HTTP request
+│       └── services  --> Functions accesed by Resources to operate with data
+│
+├── test
+│   ├── conftest.py
+│   ├── integration
+│   │   └── resources
+│   └── unit
+│       ├── models
+│       └── services
+│
+├── .flaskenv
+├── README.md
+└── requirements.txt
+```
+
+
+
+
+
+
 
 ## Requirements
-python
 
-Create a python virtual environment
-On Windows:
-```bash 
-> mkdir assignment
-> cd assignment
-> py -3 -m venv venv
-#Activate virtual environment
-> .\venv\Scripts\activate
-```
+- Python 3.11
+- pip 22.3.1
 
-On MacOs/Linux:
-```bash 
-$ mkdir assignment
-$ cd assignment
-$ python3 -m venv venv
-#Activate virtual environment
-$ . venv/bin/activate
-```
-
-Install Flask on your venv
-- Werkzeug 
-- Jinja 
-- MarkupSafe
-- ItsDangerous
-- Click 
-
-Python 3.11.1
-Flask 2.2.2
-Werkzeug 2.2.2
-python-dotenv
-flask-restful
-pytest
-coverage
-pydantic
+To install all the dependencies move to project root and execute the following
 ```bash
-
+> pip install -r requirements.txt
 ```
 
 ## Deployment
+To launch the Flask project use
+```bash
+> flask run
+```
+Project hosted on http://127.0.0.1:5000
+Send post request to http://127.0.0.1:5000/api/calculate-delivery-fee
+Post body format
+```python
+{"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2021-10-12T13:00:00Z"}
+```
+Response format
+```python
+{"delivery_fee": 710}
+```
 
-pip install -r requirements.txt
+## Tests
+To launch all the tests with coverage
+```bash 
+> coverage run -m pytest
+```
+```
+collected 29 items                                                                     
+test\integration\resources\test_delivery_fee_resource.py ....                   [ 13%] 
+test\unit\models\test_cart_model.py .......                                     [ 37%] 
+test\unit\models\test_delivery_fee_model.py .....                               [ 55%] 
+test\unit\services\test_calculate_fee_service.py .............                  [100%] 
+================================= 29 passed in 0.20s ================================= 
+```
+To see coverage results
+```bash
+> coverage report -m
+```
+```
+Name                                                       Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------
+app\__init__.py                                                0      0   100%
+app\api\__init__.py                                            0      0   100%
+app\api\models\__init__.py                                     0      0   100%
+app\api\models\cart_model.py                                  12      0   100%
+app\api\models\delivery_fee_model.py                           8      0   100%
+app\api\resources\__init__.py                                  0      0   100%
+app\api\resources\delivery_fee_resource.py                    17      0   100%
+app\api\services\calculate_fee_service.py                     18      0   100%
+app\app.py                                                     8      0   100%
+test\__init__.py                                               0      0   100%
+test\conftest.py                                               8      0   100%
+test\integration\resources\test_delivery_fee_resource.py      19      0   100%
+test\unit\__init__.py                                          0      0   100%
+test\unit\models\__init__.py                                   0      0   100%
+test\unit\models\test_cart_model.py                           30      1    97%   72
+test\unit\models\test_delivery_fee_model.py                   16      0   100%
+test\unit\services\__init__.py                                 0      0   100%
+test\unit\services\test_calculate_fee_service.py              13      2    85%   71-72
+----------------------------------------------------------------------------------------
+TOTAL                                                        149      3    98%
+```

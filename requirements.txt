@@ -2,3 +2,5 @@ flask
 flask-restful
 python-dotenv
 pydantic
+pytest
+coverage
