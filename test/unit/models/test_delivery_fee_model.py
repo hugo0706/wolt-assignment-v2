@@ -1,5 +1,3 @@
-# import sys
-# sys.path.append('.')
 import pytest
 from pydantic import ValidationError
 from app.api.models import delivery_fee_model

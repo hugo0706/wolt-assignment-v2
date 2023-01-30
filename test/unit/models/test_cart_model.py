@@ -1,25 +1,23 @@
 
-import sys
-sys.path.append('.')
+# import sys
+# sys.path.append('.')
 import pytest
 from pydantic import ValidationError
 from app.api.models import cart_model
 
 
-
 @pytest.mark.parametrize(
     "cart_value,delivery_distance,number_of_items,time,valid",
     [
-        (1,1,1,"2021-03-19T16:00:00",True),
-        (1000,1000,1000,"2023-01-20T10:00:00",True),
-        (0,1,1,"2021-03-19T16:00:00",False),
-        (1,0,1,"2021-03-19T16:00:00",False),
-        (1,1,0,"2021-03-19T16:00:00",False),
-        (1,1,1,"2021-0319T16:00:00",False)
+        (1, 1, 1, "2021-03-19T16:00:00", True),
+        (1000, 1000, 1000, "2023-01-20T10:00:00", True),
+        (0, 1, 1, "2021-03-19T16:00:00", False),
+        (1, 0, 1, "2021-03-19T16:00:00", False),
+        (1, 1, 0, "2021-03-19T16:00:00", False),
+        (1, 1, 1, "2021-0319T16:00:00", False)
     ]
 )
-
-def test_validate_cart(cart_value,delivery_distance,number_of_items,time,valid):
+def test_validate_cart(cart_value, delivery_distance, number_of_items, time, valid):
 
     data = {
         "cart_value": cart_value,
@@ -37,7 +35,6 @@ def test_validate_cart(cart_value,delivery_distance,number_of_items,time,valid):
         assert cart.time.isoformat() == time
     except ValidationError:
         assert not valid
-
 
 
 def test_missing_fields():
@@ -70,6 +67,6 @@ def test_missing_fields():
     with pytest.raises(ValidationError):
         cart = cart_model.Cart(**data)
 
-    
+
 if __name__ == "__main__":
     pytest.main()
