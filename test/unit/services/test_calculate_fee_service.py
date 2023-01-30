@@ -58,15 +58,17 @@ from pydantic import ValidationError
             {"cart_value": 10000, "delivery_distance": 50000, "number_of_items": 23, "time": "2023-01-26T18:10:00Z"},
             {"delivery_fee":0}
         ),
+        (
+            {"cart_value": 10000, "delivery_distance": 50000, "number_of_items": 23, "time": "2023-01-26T18:10:00Z"},
+            {"delivery_fee":0}
+        ),
         
     ]
 )
 def test_calculate_fee(cart_info,value):
-    print(cart_info)
+    
     data= cart_model.Cart(**cart_info)
-
-    try:
-        fee = calculate_fee_service.calculate_fee(data)
-        assert fee == value
-    except ValidationError:
-        assert not True
+    
+    fee = calculate_fee_service.calculate_fee(data)
+    assert fee == value
+    

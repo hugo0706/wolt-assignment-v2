@@ -68,5 +68,3 @@ def test_missing_fields():
         cart = cart_model.Cart(**data)
 
 
-if __name__ == "__main__":
-    pytest.main()

@@ -78,7 +78,9 @@ To launch the Flask project use
 > flask run
 ```
 Project hosted on http://127.0.0.1:5000
-Send post request to http://127.0.0.1:5000/api/calculate-delivery-fee
+
+Send post requests to http://127.0.0.1:5000/api/calculate-delivery-fee
+
 Post body format
 ```python
 {"cart_value": 790, "delivery_distance": 2235, "number_of_items": 4, "time": "2021-10-12T13:00:00Z"}
@@ -94,12 +96,12 @@ To launch all the tests with coverage
 > coverage run -m pytest
 ```
 ```
-collected 29 items                                                                     
-test\integration\resources\test_delivery_fee_resource.py ....                   [ 13%] 
-test\unit\models\test_cart_model.py .......                                     [ 37%] 
-test\unit\models\test_delivery_fee_model.py .....                               [ 55%] 
-test\unit\services\test_calculate_fee_service.py .............                  [100%] 
-================================= 29 passed in 0.20s ================================= 
+collected 30 items                             
+test\integration\resources\test_delivery_fee_resource.py ....            [ 13%]
+test\unit\models\test_cart_model.py .......                              [ 36%]
+test\unit\models\test_delivery_fee_model.py .....                        [ 53%]
+test\unit\services\test_calculate_fee_service.py .....                   [100%]
+=============================== 30 passed in 0.19s ============================
 ```
 To see coverage results
 ```bash
@@ -115,6 +117,7 @@ app\api\models\cart_model.py                                  12      0   100%
 app\api\models\delivery_fee_model.py                           8      0   100%
 app\api\resources\__init__.py                                  0      0   100%
 app\api\resources\delivery_fee_resource.py                    17      0   100%
+app\api\services\__init__.py                                   0      0   100%
 app\api\services\calculate_fee_service.py                     18      0   100%
 app\app.py                                                     8      0   100%
 test\__init__.py                                               0      0   100%
@@ -122,10 +125,10 @@ test\conftest.py                                               8      0   100%
 test\integration\resources\test_delivery_fee_resource.py      19      0   100%
 test\unit\__init__.py                                          0      0   100%
 test\unit\models\__init__.py                                   0      0   100%
-test\unit\models\test_cart_model.py                           30      1    97%   72
+test\unit\models\test_cart_model.py                           28      0   100%
 test\unit\models\test_delivery_fee_model.py                   16      0   100%
 test\unit\services\__init__.py                                 0      0   100%
-test\unit\services\test_calculate_fee_service.py              13      2    85%   71-72
+test\unit\services\test_calculate_fee_service.py               9      0   100%
 ----------------------------------------------------------------------------------------
-TOTAL                                                        149      3    98%
+TOTAL                                                        143      0   100%
 ```
