@@ -7,16 +7,16 @@ from app.api.services.calculate_fee_service import calculate_fee
 class Delivery_calculator(Resource):
 
     def post(self):
-
-        data = request.json
+        try:
+            data = request.json
+        except Exception as e:
+            return {"error": "Invalid JSON"}, 400
 
         try:
             validated_data = cart_model.Cart(**data)
-        except ValidationError as e:
-            return e.errors(), 422
 
-        delivery_fee = calculate_fee(validated_data)
-        try:
+            delivery_fee = calculate_fee(validated_data)
+      
             delivery_fee_model.DeliveryFee(**delivery_fee)
 
         except ValidationError as e:

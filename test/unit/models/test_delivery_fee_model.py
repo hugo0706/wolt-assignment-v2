@@ -7,8 +7,7 @@ from app.api.models import delivery_fee_model
     [
         (0,True),
         (1,True),
-        (16,False),
-        (1000,False),
+        (1501,False),
         (-1,False)
     ]
     )
