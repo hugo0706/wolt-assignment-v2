@@ -68,7 +68,8 @@ Flask 2.2.2
 Werkzeug 2.2.2
 python-dotenv
 flask-restful
-
+pytest
+coverage
 pydantic
 ```bash
 

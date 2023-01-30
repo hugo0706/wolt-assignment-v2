@@ -6,6 +6,6 @@ class DeliveryFee(BaseModel):
 
     @validator('delivery_fee')
     def value_greater_than_zero(cls, value):
-        if value <= 0:
+        if value < 0:
             raise ValueError('Value has to be greater than 0')
         return value
