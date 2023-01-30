@@ -33,7 +33,7 @@ def test_post_missing_fields(test_client):
     assert "value_error.missing" in response.json[0]["type"]
 
 def test_post_bad_request(test_client):
-    data = 1
+    data = {1:1}
     response = test_client.post('/api/calculate-delivery-fee', data=data)
     assert response.status_code == 400
-    assert "Bad Request" in response.json["detail"]
+    

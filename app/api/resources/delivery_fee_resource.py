@@ -8,7 +8,9 @@ class Delivery_calculator(Resource):
 
     def post(self):
         try:
-            data = request.json
+
+            data = dict(request.get_json())
+
         except Exception as e:
             return {"error": "Invalid JSON"}, 400
 
@@ -16,7 +18,7 @@ class Delivery_calculator(Resource):
             validated_data = cart_model.Cart(**data)
 
             delivery_fee = calculate_fee(validated_data)
-      
+
             delivery_fee_model.DeliveryFee(**delivery_fee)
 
         except ValidationError as e:

@@ -54,6 +54,10 @@ from pydantic import ValidationError
             {"cart_value": 100, "delivery_distance": 50000, "number_of_items": 23, "time": "2023-01-26T18:10:00Z"},
             {"delivery_fee":1500}
         ),
+        (
+            {"cart_value": 10000, "delivery_distance": 50000, "number_of_items": 23, "time": "2023-01-26T18:10:00Z"},
+            {"delivery_fee":0}
+        ),
         
     ]
 )
