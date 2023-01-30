@@ -5,7 +5,7 @@ def calculate_fee(cart: Cart):
 
     fee = 2  # first 1000 meters
     if cart.cart_value >= 100:
-        return 0
+        return {"delivery_fee": 0}
     elif cart.cart_value < 10:
         fee += 10-cart.cart_value
     if cart.delivery_distance > 1000:
@@ -17,5 +17,5 @@ def calculate_fee(cart: Cart):
     if cart.time.weekday() == 4 and 15 <= cart.time.hour and cart.time.hour < 19:
         fee *= 1.2
     if fee > 15:
-        return 15
+        return {"delivery_fee": 15}
     return {"delivery_fee": fee}

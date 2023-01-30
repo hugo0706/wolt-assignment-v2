@@ -5,7 +5,9 @@ class DeliveryFee(BaseModel):
     delivery_fee: int
 
     @validator('delivery_fee')
-    def value_greater_than_zero(cls, value):
-        if value < 0:
-            raise ValueError('Value has to be greater than 0')
+    def value_in_range(cls, value):
+        if value < 0 or value > 15:
+            raise ValueError('Value has to be in range [0 15]')
         return value
+    
+

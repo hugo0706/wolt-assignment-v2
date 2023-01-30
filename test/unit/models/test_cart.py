@@ -18,6 +18,7 @@ from app.api.models import cart_model
         (1,1,1,"2021-0319T16:00:00",False)
     ]
 )
+
 def test_validate_cart(cart_value,delivery_distance,number_of_items,time,valid):
 
     data = {

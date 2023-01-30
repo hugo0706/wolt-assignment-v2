@@ -18,6 +18,7 @@ class Delivery_calculator(Resource):
         delivery_fee = calculate_fee(validated_data)
         try:
             delivery_fee_model.DeliveryFee(**delivery_fee)
+            print(**delivery_fee)
         except ValidationError as e:
             return e.errors(), 422
 
