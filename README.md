@@ -84,39 +84,40 @@ To launch all the tests with coverage
 > coverage run -m pytest
 ```
 ```
-collected 30 items                             
-test\integration\resources\test_delivery_fee_resource.py ....            [ 13%]
-test\unit\models\test_cart_model.py .......                              [ 36%]
-test\unit\models\test_delivery_fee_model.py .....                        [ 53%]
+collected 34 items                             
+test\integration\resources\test_delivery_fee_resource.py ....            [ 11%]
+test\unit\models\test_cart_model.py .......                              [ 41%]
+test\unit\models\test_delivery_fee_model.py .....                        [ 58%]
 test\unit\services\test_calculate_fee_service.py .....                   [100%]
-=============================== 30 passed in 0.19s ============================
+=============================== 34 passed in 0.53s ============================
 ```
 To see coverage results
 ```bash
 > coverage report -m
 ```
 ```
-Name                                                       Stmts   Miss  Cover   Missing
-----------------------------------------------------------------------------------------
-app\__init__.py                                                0      0   100%
-app\api\__init__.py                                            0      0   100%
-app\api\models\__init__.py                                     0      0   100%
-app\api\models\cart_model.py                                  12      0   100%
-app\api\models\delivery_fee_model.py                           8      0   100%
-app\api\resources\__init__.py                                  0      0   100%
-app\api\resources\delivery_fee_resource.py                    17      0   100%
-app\api\services\__init__.py                                   0      0   100%
-app\api\services\calculate_fee_service.py                     18      0   100%
-app\app.py                                                     8      0   100%
-test\__init__.py                                               0      0   100%
-test\conftest.py                                               8      0   100%
-test\integration\resources\test_delivery_fee_resource.py      19      0   100%
-test\unit\__init__.py                                          0      0   100%
-test\unit\models\__init__.py                                   0      0   100%
-test\unit\models\test_cart_model.py                           28      0   100%
-test\unit\models\test_delivery_fee_model.py                   16      0   100%
-test\unit\services\__init__.py                                 0      0   100%
-test\unit\services\test_calculate_fee_service.py               9      0   100%
-----------------------------------------------------------------------------------------
-TOTAL                                                        143      0   100%
+Name                                                           Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------------------------------
+app\__init__.py                                                    0      0   100%
+app\api\__init__.py                                                0      0   100%
+app\api\models\__init__.py                                         0      0   100%
+app\api\models\cart_model.py                                      12      0   100%
+app\api\models\delivery_fee_model.py                               8      0   100%
+app\api\resources\__init__.py                                      0      0   100%
+app\api\resources\delivery_fee_resource.py                        17      0   100%
+app\api\services\__init__.py                                       0      0   100%
+app\api\services\calculate_fee_service.py                         18      0   100%
+app\app.py                                                        10      0   100%
+app\test\__init__.py                                               0      0   100%
+app\test\conftest.py                                               8      0   100%
+app\test\integration\resources\test_delivery_fee_resource.py      19      0   100%
+app\test\read_test_data.py                                         7      0   100%
+app\test\unit\__init__.py                                          0      0   100%
+app\test\unit\models\__init__.py                                   0      0   100%
+app\test\unit\models\test_cart_model.py                           20      0   100%
+app\test\unit\models\test_delivery_fee_model.py                   17      0   100%
+app\test\unit\services\__init__.py                                 0      0   100%
+app\test\unit\services\test_calculate_fee_service.py              10      0   100%
+--------------------------------------------------------------------------------------------
+TOTAL                                                            146      0   100%
 ```
