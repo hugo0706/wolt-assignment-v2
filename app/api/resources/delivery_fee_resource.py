@@ -5,7 +5,6 @@ from app.api.services.calculate_fee_service import calculate_fee
 from app.api import error_handlers
 
 
-
 class Delivery_calculator(Resource):
 
     def post(self):
