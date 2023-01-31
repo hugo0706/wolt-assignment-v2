@@ -1,6 +1,11 @@
 from flask import Flask,Blueprint
 from flask_restful import Api
 from app.api.resources import delivery_fee_resource
+import werkzeug
+
+class InsufficientStorage(werkzeug.exceptions.HTTPException):
+    code = 400
+    description = 'Not enough storage space.'
 
 
 def create_app():
@@ -11,7 +16,7 @@ def create_app():
 
     api = Api(api_bp)
     api.add_resource(delivery_fee_resource.Delivery_calculator, "/calculate-delivery-fee")
-
+    
     app.register_blueprint(api_bp)
 
     return app
