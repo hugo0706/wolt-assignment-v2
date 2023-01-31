@@ -32,18 +32,18 @@ This is a simple application with just one endpoint in one server, there is no p
 ```
 ├── app
 │   ├── app.py --> Flask project creation and API routing declaration
-│   └── api
-│       ├── models    --> Pydantic models used to validate and serialize/deserialize data
-│       ├── resources --> Flask-restful Resources used to act upon an upcoming HTTP request
-│       └── services  --> Functions accesed by Resources to operate with data
-│
-├── test
-│   ├── conftest.py
-│   ├── integration
-│   │   └── resources
-│   └── unit
-│       ├── models
-│       └── services
+│   ├── api
+│   │   ├── models    --> Pydantic models used to validate and serialize/deserialize data
+│   │   ├── resources --> Flask-restful Resources used to act upon an upcoming HTTP request
+│   │   └── services  --> Functions accesed by Resources to operate with data
+│   │
+│   └── test
+│      ├── conftest.py
+│      ├── integration
+│      │   └── resources
+│      └── unit
+│          ├── models
+│          └── services
 │
 ├── .flaskenv
 ├── README.md
