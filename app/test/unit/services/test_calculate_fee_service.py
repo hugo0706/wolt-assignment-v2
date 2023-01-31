@@ -1,7 +1,7 @@
 import pytest
 from app.api.models import cart_model
 from app.api.services import calculate_fee_service
-from test.read_test_data import read_test_data
+from app.test.read_test_data import read_test_data
 
 data=read_test_data()
 

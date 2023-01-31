@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 from app.api.models import delivery_fee_model
-from test.read_test_data import read_test_data
+from app.test.read_test_data import read_test_data
 
 data = read_test_data()
 @pytest.mark.parametrize(

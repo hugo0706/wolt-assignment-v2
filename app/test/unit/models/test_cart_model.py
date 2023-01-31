@@ -4,7 +4,7 @@
 import pytest
 from pydantic import ValidationError
 from app.api.models import cart_model
-from test.read_test_data import read_test_data
+from app.test.read_test_data import read_test_data
 
 data = read_test_data()
 
