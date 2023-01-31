@@ -5,5 +5,5 @@ def read_test_data():
     
     with open(path) as f:
         data = json.load(f)
-        return data
+        
     return data
