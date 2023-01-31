@@ -1,19 +1,14 @@
 import pytest
 from pydantic import ValidationError
 from app.api.models import delivery_fee_model
+from test.read_test_data import read_test_data
 
+data = read_test_data()
 @pytest.mark.parametrize(
-    "delivery_fee,valid",
-    [
-        (0,True),
-        (1,True),
-        (1501,False),
-        (-1,False)
-    ]
+    "data,valid",
+    data['delivery_fee_validate']
     )
-def test_validate_delivery_fee(delivery_fee,valid):
-    
-    data={"delivery_fee": delivery_fee}
+def test_validate_delivery_fee(data,valid):
 
     try:
         delivery_fee = delivery_fee_model.DeliveryFee(**data)
