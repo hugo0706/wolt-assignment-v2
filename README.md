@@ -7,7 +7,8 @@
    
 ## Django vs Flask
 
-To decide whether I will use Flask or Django as a Framework to develop this API, first I have to make clear the requirements and information I have about the project. 
+I decided to use Django or Flask as they are the most commonly used frameworks, but I know there are others like FastAPI that work great too.
+To decide whether I will use Flask or Django as a Framework to develop this API, first I need to have clear the requirements and information I have about the project. 
 
 The project consists on implementing a **single endpoint API** which will recieve a request with a JSON payload containing the information about a shopping cart, and will return a response with a JSON payload containing the delivery fee of that shopping cart.
 
@@ -33,18 +34,22 @@ This is a simple application with just one endpoint in one server, there is no p
 ├── app
 │   ├── app.py --> Flask project creation and API routing declaration
 │   ├── api
+│   │   ├── error_handlers --> Classes to handle errors
 │   │   ├── models    --> Pydantic models used to validate and serialize/deserialize data
 │   │   ├── resources --> Flask-restful Resources used to act upon an upcoming HTTP request
 │   │   └── services  --> Functions accesed by Resources to operate with data
 │   │
 │   └── test
 │      ├── conftest.py
+│      ├── read_test_data.py
+│      ├── test_data.json
 │      ├── integration
 │      │   └── resources
 │      └── unit
 │          ├── models
 │          └── services
 │
+├── .coverage
 ├── .flaskenv
 ├── README.md
 └── requirements.txt
@@ -55,19 +60,23 @@ This is a simple application with just one endpoint in one server, there is no p
 - Python 3.11
 - pip 22.3.1
 
-To install all the dependencies move to project root and execute the following
+Create a python virtual environment in project root like in [Flasks Installation Guide](https://flask.palletsprojects.com/en/2.2.x/installation/)
+
+To install all the dependencies move to project root and execute the following (virtual environment activated)
 ```bash
 > pip install -r requirements.txt
 ```
 
 ## Deployment
-To launch the Flask project use
+
+
+To launch the Flask project locate on projects root and run:
 ```bash
 > flask run
 ```
 Project hosted on http://127.0.0.1:5000
 
-Send post requests to http://127.0.0.1:5000/api/calculate-delivery-fee
+Send **post** requests to http://127.0.0.1:5000/api/calculate-delivery-fee
 
 Post body format
 ```python
@@ -100,11 +109,12 @@ Name                                                           Stmts   Miss  Cov
 --------------------------------------------------------------------------------------------
 app\__init__.py                                                    0      0   100%
 app\api\__init__.py                                                0      0   100%
+app\api\error_handlers.py                                          4      0   100%
 app\api\models\__init__.py                                         0      0   100%
 app\api\models\cart_model.py                                      12      0   100%
 app\api\models\delivery_fee_model.py                               8      0   100%
 app\api\resources\__init__.py                                      0      0   100%
-app\api\resources\delivery_fee_resource.py                        17      0   100%
+app\api\resources\delivery_fee_resource.py                        18      0   100%
 app\api\services\__init__.py                                       0      0   100%
 app\api\services\calculate_fee_service.py                         18      0   100%
 app\app.py                                                        10      0   100%
@@ -119,5 +129,5 @@ app\test\unit\models\test_delivery_fee_model.py                   17      0   10
 app\test\unit\services\__init__.py                                 0      0   100%
 app\test\unit\services\test_calculate_fee_service.py              10      0   100%
 --------------------------------------------------------------------------------------------
-TOTAL                                                            146      0   100%
+TOTAL                                                            151      0   100%    0   100%
 ```

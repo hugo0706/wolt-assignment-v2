@@ -1,5 +1,6 @@
 from app.api.models.cart_model import Cart
 
+from math import ceil
 
 def calculate_fee(cart: Cart):
     
@@ -9,7 +10,7 @@ def calculate_fee(cart: Cart):
     elif cart.cart_value < 1000:
         fee += 1000-cart.cart_value
     if cart.delivery_distance > 1000:
-        fee += round((cart.delivery_distance-1)/1000)*100
+        fee += (ceil((cart.delivery_distance)/500)-2)*100
     if cart.number_of_items > 12:
         fee += 120
     if cart.number_of_items > 4:
@@ -19,3 +20,5 @@ def calculate_fee(cart: Cart):
     if fee > 1500:
         return {"delivery_fee": 1500}
     return {"delivery_fee": fee}
+
+
